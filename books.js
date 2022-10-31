@@ -1,33 +1,40 @@
+const books = [];
+
+function remove(button) {
+  button.target.parentElement.parentElement.remove();
+  delete books[button.target.className.substring(6)];
+}
+
 function add() {
-  const books = [];
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
 
-  function Book(bookTitle, bookAuthor) {
-    bookTitle = title;
-    bookAuthor = author;
-  }
-
-  const book = new Book();
+  const book = {
+    bookTitle: title,
+    bookAuthor: author,
+    bookID: books.length,
+  };
 
   books.push(book);
   const bookList = document.querySelector('.book_list');
   const li = document.createElement('li');
   const p = document.createElement('p');
   p.innerHTML = `${books[books.length - 1].bookTitle}<br>${books[books.length - 1].bookAuthor}
-    <br><button type="button" class="${books.length - 1}" id="remove">Remove</button><hr>`;
+    <br><button type="button" class="remove${books.length - 1}" id="remove">Remove</button><hr>`;
   li.appendChild(p);
   bookList.appendChild(li);
 
   // storing in local storage
   // converting all array data into string
   const json = JSON.stringify(books[books.length - 1]);
-  localStorage.setItem('formData', json);
+  localStorage.formData = json;
 
   // retrieving from local storage
   const stored = localStorage.getItem('formData');
   const prsd = JSON.parse(stored);
-  console.log(prsd);
+
+  const removeBtn = document.querySelector(`.remove${books.length - 1}`);
+  removeBtn.addEventListener('click', remove);
 }
 
 const addBtn = document.getElementById('add');
