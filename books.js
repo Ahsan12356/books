@@ -26,7 +26,7 @@ function add() {
 
   // storing in local storage
   // converting all array data into string
-  const json = JSON.stringify(books[books.length - 1]);
+  const json = JSON.stringify(books);
   localStorage.formData = json;
 
   // retrieving from local storage
