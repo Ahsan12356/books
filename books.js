@@ -3,12 +3,10 @@ function add() {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
 
-  function Book(bookTitle, bookAuthor) {
-    bookTitle = title;
-    bookAuthor = author;
-  }
-
-  const book = new Book();
+  const book = {
+    bookTitle: title,
+    bookAuthor: author,
+  };
 
   books.push(book);
   const bookList = document.querySelector('.book_list');
