@@ -14,7 +14,7 @@ function populate() {
   const stored = localStorage.booksData;
   const prsd = JSON.parse(stored);
   if (stored) {
-    for (let i = 0; i < prsd.length; i+=1) {
+    for (let i = 0; i < prsd.length; i += 1) {
     // retrieving from local storage
       books.push(prsd[i]);
       const li = document.createElement('li');
@@ -29,7 +29,6 @@ function populate() {
   }
 }
 document.addEventListener('DOMContentLoaded', populate); // function to call on load
-
 
 function add() {
   const title = document.getElementById('title').value;
