@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', populate); // function to call on 
 function add() {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
-
+  if(title.length!=0 && author.length!=0) {
   const book = {
     bookTitle: title,
     bookAuthor: author,
@@ -57,6 +57,7 @@ function add() {
 
   const removeBtn = document.querySelector(`.remove${books.length - 1}`);
   removeBtn.addEventListener('click', remove);
+}
 }
 
 const addBtn = document.getElementById('add');
