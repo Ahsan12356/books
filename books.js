@@ -33,31 +33,31 @@ document.addEventListener('DOMContentLoaded', populate); // function to call on 
 function add() {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
-  if(title.length!=0 && author.length!=0) {
-  const book = {
-    bookTitle: title,
-    bookAuthor: author,
-    bookID: books.length,
-  };
+  if (title.length !== 0 && author.length !== 0) {
+    const book = {
+      bookTitle: title,
+      bookAuthor: author,
+      bookID: books.length,
+    };
 
-  books.push(book);
-  const li = document.createElement('li');
-  const p = document.createElement('p');
-  p.innerHTML = `${books[books.length - 1].bookTitle}<br>${books[books.length - 1].bookAuthor}
+    books.push(book);
+    const li = document.createElement('li');
+    const p = document.createElement('p');
+    p.innerHTML = `${books[books.length - 1].bookTitle}<br>${books[books.length - 1].bookAuthor}
     <br><button type="button" class="remove${books.length - 1}" id="remove">Remove</button><hr>`;
-  li.appendChild(p);
-  bookList.appendChild(li);
+    li.appendChild(p);
+    bookList.appendChild(li);
 
-  if (typeof (Storage) !== 'undefined') {
-  // storing in local storage
-  // converting all array data into string
-    const json = JSON.stringify(books);
-    localStorage.setItem('booksData', json);
+    if (typeof (Storage) !== 'undefined') {
+      // storing in local storage
+      // converting all array data into string
+      const json = JSON.stringify(books);
+      localStorage.setItem('booksData', json);
+    }
+
+    const removeBtn = document.querySelector(`.remove${books.length - 1}`);
+    removeBtn.addEventListener('click', remove);
   }
-
-  const removeBtn = document.querySelector(`.remove${books.length - 1}`);
-  removeBtn.addEventListener('click', remove);
-}
 }
 
 const addBtn = document.getElementById('add');
